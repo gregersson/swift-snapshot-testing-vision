@@ -1,0 +1,7 @@
+Hello, world!
+Hello again.
+Left
+Right
+The quick brown fox
+jumps over the lazy dog
+Good bye
