@@ -1,6 +1,6 @@
 import XCTest
 import SnapshotTesting
-@testable import SnapshotTestingVision
+@testable import SnapshotVision
 import SwiftUI
 import VisionImageScan
 

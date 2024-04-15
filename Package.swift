@@ -10,9 +10,9 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "SnapshotTestingVision",
+            name: "SnapshotVision",
             targets: ["VisionImageScan",
-                      "SnapshotTestingVision"]),
+                      "SnapshotVision"]),
     ],
     dependencies: [
         .package(
@@ -22,7 +22,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SnapshotTestingVision",
+            name: "SnapshotVision",
             dependencies: [
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
                 "VisionImageScan"
@@ -40,13 +40,13 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "SnapshotTestingVisionTests",
+            name: "SnapshotVisionTests",
             dependencies: [
                 "VisionImageScan",
-                "SnapshotTestingVision"],
+                "SnapshotVision"],
             exclude: [
                 "__Snapshots__"
             ])
-        
+
     ]
 )
