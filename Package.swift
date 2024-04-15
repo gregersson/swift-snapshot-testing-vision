@@ -32,12 +32,21 @@ let package = Package(
         ),
         .testTarget(
             name: "VisionImageScanTests",
-            dependencies: ["VisionImageScan",
-                           .product(name: "SnapshotTesting", package: "swift-snapshot-testing")]),
-
+            dependencies: [
+                "VisionImageScan",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")],
+            exclude: [
+                "__Snapshots__"
+            ]
+        ),
         .testTarget(
             name: "SnapshotTestingVisionTests",
-            dependencies: ["VisionImageScan",
-                           "SnapshotTestingVision"]),
+            dependencies: [
+                "VisionImageScan",
+                "SnapshotTestingVision"],
+            exclude: [
+                "__Snapshots__"
+            ])
+        
     ]
 )
