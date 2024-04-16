@@ -1,6 +1,6 @@
 # 📸👀🤖 SnapshotVision
 
-Snapshot testing your views based on what texts they contain.
+Snapshot testing your views based on what texts can be seen.
 
 This package runs text recognition using Apples Vision framework (https://developer.apple.com/documentation/vision/) 
 and generates snapshot text files from views or viewcontrollers.
@@ -13,7 +13,7 @@ only use components that are already pixel tested - using images for snapshottin
 You will also get a lot of failures for the snapshot images of views when a common visual component changes.
 
 Using text recognition on your views might not give you a perfect quality assurance, but it should serve as a robust 
-minimum test. If some text is no longer visible in your view, something has probably gone wrong.
+minimum test. If some text is no longer visible in your view - something has probably gone wrong.
 
 ## Usage
 SnapshotVision provides a .vision snapshotting strategy that fits into the assertSnapshot assertion from SnapshotTesting. 
@@ -53,7 +53,6 @@ class SampleTests: XCTestCase {
         vc.view = helloWorldView()
         assertSnapshot(of: vc, as: .vision)
     }
-
 }
 
 ```
@@ -65,7 +64,9 @@ Support for snapshotting the following formats:
 - UIViewController
 - SwiftUI View
 
-When a snapshot fails, a debug image will be attached to the report.
+When a snapshot fails, a debug image will be attached to the report. The matches are numbered in the image. If using the default text match reducer, the numbers will correspond to the line number of the actual output.
+
+<img src="https://github.com/gregersson/swift-snapshot-testing-vision/assets/980485/a37b0f09-0aa6-4613-a823-1bc52a3c39be" width="442" height="959">
 
 ### Customization
 It should be possible to customize mostly everything to your needs.
