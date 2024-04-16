@@ -22,21 +22,50 @@ The standard output is a text file with each line containing a text match of the
 Don't forget to specify a frame to your SwiftUI Views.
 
 ```swift
+import Foundation
 import XCTest
 import SwiftUI
 import SnapshotTesting
 import SnapshotVision
 
-class HelloWorldTests: XCTestCase {
+class SampleTests: XCTestCase {
 
-    func testHelloWorld() throws {
-        let view = Text("Hello world!")
+    func testSwiftUIView() {
+        let swiftUIView = Text("Hello world!")
             .frame(width: 100, height: 100)
 
-        assertSnapshot(of: view, as: .vision)
+        assertSnapshot(of: swiftUIView, as: .vision)
     }
+
+    func helloWorldView() -> UIView {
+        let label = UILabel()
+        label.text = "Hello world!"
+        label.backgroundColor = .white
+        return label
+    }
+
+    func testUIView() {
+        assertSnapshot(of: helloWorldView(), as: .vision)
+    }
+
+    func testUIViewController() {
+        let vc = UIViewController()
+        vc.view = helloWorldView()
+        assertSnapshot(of: vc, as: .vision)
+    }
+
 }
+
 ```
+### Features
+Support for snapshotting the following formats:
+- CGImage
+- UIImage
+- UIView
+- UIViewController
+- SwiftUI View
+
+When a snapshot fails, a debug image will be attached to the report.
 
 ### Customization
 It should be possible to customize mostly everything to your needs.

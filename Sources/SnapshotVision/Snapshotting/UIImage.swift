@@ -12,8 +12,11 @@ extension Snapshotting where Value == UIImage, Format == StringWithDebugImage {
                     Snapshotting<UIImage, UIImage>
                         .image()
                         .snapshot(otherValue).run { snap in
-                            // TODO: no force unwrap?
-                            callback(snap.cgImage!)
+                            guard let image = snap.cgImage
+                            else {
+                                fatalError("Failed to get CGImage from UIImage: \(snap)")
+                            }
+                            callback(image)
                         }
                 }
             }

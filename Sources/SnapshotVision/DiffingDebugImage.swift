@@ -22,14 +22,23 @@ extension DiffingDebugImage {
 
                 // Draw the line number of each match
                 let lineNumber = "\(index+1)"
-                let textStyle = NSMutableParagraphStyle()
-                textStyle.alignment = .center
 
-                lineNumber.draw(in: match.boundingBox,
+                let fontSize = match.boundingBox.height * 0.7
+
+                let nameTextAttributes = [
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize),
+                ]
+                let nameTextSize = lineNumber.size(withAttributes: nameTextAttributes)
+
+                let rect = CGRect(origin: .init(x: match.boundingBox.midX - nameTextSize.width/2.0,
+                                                y: match.boundingBox.midY - nameTextSize.height/2.0),
+                                  size: nameTextSize)
+
+                lineNumber.draw(in: rect,
                                 withAttributes: [
-                                    .paragraphStyle: textStyle,
+                                    .font: UIFont.systemFont(ofSize: fontSize),
                                     .foregroundColor: UIColor.red,
-                                    .backgroundColor: UIColor.white.withAlphaComponent(0.7)
+                                    .backgroundColor: UIColor.white.withAlphaComponent(0.9)
                                 ])
             }
         }
