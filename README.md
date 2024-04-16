@@ -57,7 +57,7 @@ class SampleTests: XCTestCase {
 
 ```
 ### Features
-Support for snapshotting the following formats:
+Support for snapshotting the following formats on the iOS platform:
 - CGImage
 - UIImage
 - UIView
